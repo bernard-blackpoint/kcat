@@ -125,7 +125,7 @@ build libjansson "([[ -f config.status ]] || ./configure --enable-static --prefi
 github_download "apache/avro" "release-1.8.2" "avroc"
 build avroc "cd lang/c && mkdir -p build && cd build && cmake -DCMAKE_C_FLAGS=\"$CFLAGS\" -DCMAKE_INSTALL_PREFIX=$DEST .. && make install" || (echo "Failed to build Avro C: AVRO support will probably be disabled" ; true)
 
-github_download "confluentinc/libserdes" "master" "libserdes"
+github_download "confluentinc/libserdes" "7.1.x" "libserdes"
 build libserdes "([ -f config.h ] || ./configure  --prefix=$DEST --CFLAGS=-I${DEST}/include --LDFLAGS=-L${DEST}/lib) && make && make install" || (echo "Failed to build libserdes: AVRO support will probably be disabled" ; true)
 
 popd > /dev/null
